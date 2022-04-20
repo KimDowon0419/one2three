@@ -45,7 +45,7 @@ jobs:
           ECR_REPOSITORY: ${{secrets.ECR_REPOSITORY }}
           IMAGE_TAG: latest
         with:
-          args: set image deployment/$ECR_REPOSITORY $ECR_REPOSITORY=$ECR_REGISTRY/$ECR_REPOSITORY:latest
+          args: set image deployment/${{ECR_REPOSITORY}} ${{ECR_REPOSITORY}}=${{ECR_REGISTRY}}/${{ECR_REPOSITORY}}:latest
           
       - name: verify deployment
         uses: kodermax/kubectl-aws-eks@master
@@ -53,6 +53,3 @@ jobs:
           KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
         with:
           args: rollout status deployment/${{secrets.ECR_REPOSITORY }}
-
-
-
