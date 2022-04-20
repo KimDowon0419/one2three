@@ -2,3 +2,7 @@
 *.sqlite
 *.env
 venv/
+*.yaml
+*.yml
+k8s/
+*.DS_Store

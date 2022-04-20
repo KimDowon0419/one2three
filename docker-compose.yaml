@@ -1,12 +1,14 @@
 version: "3.8"
 services:
   mynginx:
-    image: redtea89/one:arm
+    build: nginx/
     ports:
       - 80:80
     depends_on:
       - mydjango
+    volumes:
+      - ~/Documents/nginx:/var/log/nginx
   mydjango:
-    image: redtea89/two:arm
+    build: django
     ports:
       - 8000:8000
